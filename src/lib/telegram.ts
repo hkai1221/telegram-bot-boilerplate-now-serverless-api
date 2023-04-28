@@ -1,8 +1,11 @@
 import { NowRequest, NowResponse } from "@vercel/node";
 import Telegraf, { Context as TelegrafContext, Extra } from "telegraf";
 import { ExtraReplyMessage } from "telegraf/typings/telegram-types";
+import { SocksProxyAgent } from "socks-proxy-agent";
+
 import { about, greeting } from "..";
 import { ok } from "./responses";
+const socksAgent = new SocksProxyAgent("socks://127.0.0.1:25555");
 
 const debug = require("debug")("lib:telegram");
 
@@ -12,7 +15,11 @@ const VERCEL_URL = process.env.VERCEL_URL;
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
 
-export const bot = new Telegraf(BOT_TOKEN);
+export const bot = new Telegraf(BOT_TOKEN, {
+	telegram:isDev ? {
+	  agent: socksAgent,
+	}:{},
+  });
 
 function botUtils() {
 	bot.use(Telegraf.log());

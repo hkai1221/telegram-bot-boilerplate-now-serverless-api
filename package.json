@@ -10,6 +10,7 @@
 		"prettier": "prettier --single-quote --trailing-comma all --write 'src/**/*.ts'"
 	},
 	"dependencies": {
+		"socks-proxy-agent": "^7.0.0",
 		"telegraf": "^3.38.0"
 	},
 	"devDependencies": {
