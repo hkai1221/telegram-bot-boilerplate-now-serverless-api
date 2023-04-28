@@ -1,7 +1,7 @@
 const debug = require('debug')('bot:greeting_text');
 
-const replyToMessage = (ctx: any, messageId: string, string: string) =>
-  ctx.reply(string, {
+const replyToMessage =async (ctx: any, messageId: string, string: string) =>
+  await ctx.reply(string, {
     reply_to_message_id: messageId,
   });
 

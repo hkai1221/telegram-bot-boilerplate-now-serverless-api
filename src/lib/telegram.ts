@@ -28,8 +28,8 @@ function botUtils() {
 	bot.start(ctx => {
 		return ctx.reply("This is a test bot.");
 	});
-
 	bot.command("about", about()).on("text", greeting());
+	
 }
 
 async function localBot() {
